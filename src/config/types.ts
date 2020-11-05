@@ -1,4 +1,4 @@
-export type NewsType = {
+export interface INewsProps {
   author?: string;
   content?: string;
   description?: string;
@@ -7,4 +7,4 @@ export type NewsType = {
   title?: string;
   url?: string;
   urlToImage?: string;
-};
+}

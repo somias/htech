@@ -1,16 +1,16 @@
 import React from 'react';
 import { Image, TouchableOpacity } from 'react-native';
-import { DrawerActions } from '@react-navigation/native';
 
 import { ICONS } from '~/assets';
-
 import styles from './styles';
 
-const Interface = ({ navigation }: any) => {
+type Props = {
+  onPress: () => {};
+};
+
+const Interface = ({ onPress }: Props) => {
   return (
-    <TouchableOpacity
-      onPress={() => navigation.dispatch(DrawerActions.toggleDrawer())}
-    >
+    <TouchableOpacity onPress={onPress}>
       <Image source={ICONS.settings} style={styles.iconStyle} />
     </TouchableOpacity>
   );

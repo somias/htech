@@ -1,17 +1,15 @@
 import React from 'react';
-import { View, Text, FlatList } from 'react-native';
+import { View, FlatList } from 'react-native';
 
 import NewsCard from '~/components/NewsCard';
 
-// import type {NewsType} from '~/config/types'
+import { INewsProps } from '~/config/types';
 
 import styles from './styles';
 
-// type Props = {
-//   data:{
-//     articles: NewsType[]
-//   }
-// }
+interface Props {
+  data?: INewsProps[];
+}
 
 const renderItem = ({ item }: any) => (
   <NewsCard
@@ -21,11 +19,10 @@ const renderItem = ({ item }: any) => (
   />
 );
 
-const Interface = (props: any) => {
-  console.log('Props ==>>', props);
+const Interface = (props: Props) => {
   return (
     <View style={styles.container}>
-      <FlatList data={props.data.articles} renderItem={renderItem} />
+      <FlatList data={props.data} renderItem={renderItem} />
     </View>
   );
 };

@@ -3,10 +3,11 @@ import { StyleSheet } from 'react-native';
 export default StyleSheet.create({
   container: {
     flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
   },
-  buttonWrapper: {
-    width: '100%',
-    flexDirection: 'row',
-    backgroundColor: 'pink',
+  errorMessage: {
+    fontWeight: 'bold',
+    fontSize: 20,
   },
 });

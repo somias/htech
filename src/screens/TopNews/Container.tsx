@@ -1,23 +1,26 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import Interface from './Interface';
+import LoadingSpinner from '~/components/LoadingSpinner';
+import DisplayError from '~/components/DisplayError';
 
 import fetchNews from '~/config/fetchNews';
 
 export default () => {
-  const { getData } = fetchNews();
-  const [data, setData] = useState([]);
+  const { data, getData, loading, error } = fetchNews();
 
   useEffect(() => {
-    fetch(
-      'http://newsapi.org/v2/top-headlines?country=us&apiKey=a946f39f76a14971899028ee24d07e53'
-    )
-      .then((response) => response.json())
-      .then((json) => setData(json))
-      .catch((error) => console.error(error));
-    //   .finally(() => setLoading(false));
+    getData();
   }, []);
 
-  const newsData = data ? data : [];
+  const newsData = data || [];
+
+  if (loading) {
+    return <LoadingSpinner />;
+  }
+
+  if (error) {
+    return <DisplayError error={error} />;
+  }
 
   return <Interface data={newsData} />;
 };

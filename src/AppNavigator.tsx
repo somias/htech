@@ -2,7 +2,7 @@ import React from 'react';
 import { SafeAreaView, StyleSheet } from 'react-native';
 
 //Navigation imports
-import { NavigationContainer, DrawerActions } from '@react-navigation/native';
+import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
 import { createDrawerNavigator } from '@react-navigation/drawer';
@@ -40,7 +40,11 @@ const StackNavigation = () => {
 const TabNavigation = () => {
   return (
     <Tab.Navigator>
-      <Tab.Screen name="TopNews" component={TopNews} />
+      <Tab.Screen
+        name="TopNews"
+        component={TopNews}
+        options={{ title: 'Top News' }}
+      />
       <Tab.Screen name="Categories" component={Categories} />
       <Tab.Screen name="Search" component={Search} />
     </Tab.Navigator>

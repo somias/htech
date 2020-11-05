@@ -1,10 +1,10 @@
-import React, { createContext, useState, useContext } from 'react';
+import React, { createContext, useState } from 'react';
 
 export const NewsContext = createContext({
-  country: 'us',
-  setCountry: (country: string) => {},
-  // data: [],
-  // setData: (data: any) => {},
+  newsCountry: '',
+  setNewsCountry: (country: string) => {},
+  data: [],
+  setData: (data: any) => {},
 });
 
 type Props = {
@@ -12,17 +12,15 @@ type Props = {
 };
 
 export const NewsContextProvider = ({ children }: Props) => {
-  const [country, setCountry] = useState<string>('us');
-  // const [data, setData] = useState<any>([]);
+  const [newsCountry, setNewsCountry] = useState<string>('us');
+  const [data, setData] = useState<any>([]);
 
   const value = {
-    country,
-    setCountry,
-    // data,
-    // setData,
+    newsCountry,
+    setNewsCountry,
+    data,
+    setData,
   };
 
-  return (
-    <NewsContext.Provider value={value}> {children} </NewsContext.Provider>
-  );
+  return <NewsContext.Provider value={value}>{children}</NewsContext.Provider>;
 };

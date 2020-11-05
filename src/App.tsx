@@ -20,9 +20,9 @@ const App = () => {
   return (
     <>
       <StatusBar barStyle="dark-content" />
-      {/* <NewsContextProvider> */}
-      <AppNavigator />
-      {/* </NewsContextProvider> */}
+      <NewsContextProvider>
+        <AppNavigator />
+      </NewsContextProvider>
     </>
   );
 };
