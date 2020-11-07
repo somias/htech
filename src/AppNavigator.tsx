@@ -32,7 +32,11 @@ const StackNavigation = () => {
           headerRight: () => <OpenDrawer navigation={navigation} />,
         })}
       />
-      <Stack.Screen name="NewsDetails" component={NewsDetails} />
+      <Stack.Screen
+        name="NewsDetails"
+        component={NewsDetails}
+        options={{ title: 'News Details' }}
+      />
     </Stack.Navigator>
   );
 };

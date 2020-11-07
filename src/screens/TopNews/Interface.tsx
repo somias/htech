@@ -11,13 +11,16 @@ interface Props {
   data?: INewsProps[];
 }
 
-const renderItem = ({ item }: any) => (
-  <NewsCard
-    title={item.title}
-    urlToImage={item.urlToImage}
-    description={item.description}
-  />
-);
+const renderItem = ({ item }: { item: INewsProps }) => {
+  return (
+    <NewsCard
+      title={item.title}
+      urlToImage={item.urlToImage}
+      description={item.description}
+      {...item}
+    />
+  );
+};
 
 const Interface = (props: Props) => {
   return (

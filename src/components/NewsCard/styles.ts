@@ -5,22 +5,23 @@ const { width } = Dimensions.get('window');
 export default StyleSheet.create({
   container: {
     padding: 10,
-    // height: 200,
     backgroundColor: 'white',
     width: width,
-    // borderWidth: 2,
-    // borderColor: 'black',
+    shadowOffset: {
+      width: 1,
+      height: 1,
+    },
+    shadowOpacity: 0.5,
+
+    elevation: 10,
   },
-  titleWrapper: {
-    // marginBottom: 5,
-  },
+  titleWrapper: {},
   title: {
     fontSize: 16,
     fontWeight: 'bold',
   },
   imageWrapper: {
     height: 200,
-    backgroundColor: 'lightblue',
     marginVertical: 5,
   },
   imageStyle: {
@@ -28,11 +29,10 @@ export default StyleSheet.create({
     height: '100%',
   },
   descriptionWrapper: {
-    // paddingTop: 5,
+    flex: 1,
+    justifyContent: 'space-between',
   },
-  descriptionText: {
-    // backgroundColor: 'blue',
-  },
+  descriptionText: {},
   descriptionMore: {
     fontSize: 18,
     fontWeight: 'bold',
