@@ -1,23 +1,19 @@
 import React from 'react';
 import { View, Text, Image, TouchableOpacity } from 'react-native';
 
-import { useNavigation } from '@react-navigation/native';
-
 import styles from './styles';
 
 import { INewsProps } from '~/config/types';
 
-const Interface = ({
-  author,
-  publishedAt,
-  title,
-  urlToImage,
-  description,
-  content,
-  source,
-}: INewsProps) => {
-  const { navigate } = useNavigation();
+interface Props {
+  onPress: () => void;
+  data: INewsProps;
+}
 
+const Interface = ({
+  onPress,
+  data: { title, urlToImage, description },
+}: Props) => {
   return (
     <View style={styles.container}>
       <View style={styles.titleWrapper}>
@@ -34,18 +30,7 @@ const Interface = ({
 
       <View style={styles.descriptionWrapper}>
         <Text style={styles.descriptionText}>{description}</Text>
-        <TouchableOpacity
-          onPress={() =>
-            navigate('NewsDetails', {
-              author,
-              publishedAt,
-              title,
-              urlToImage,
-              content,
-              source,
-            })
-          }
-        >
+        <TouchableOpacity onPress={onPress}>
           <Text style={styles.descriptionMore}>More {'>'}</Text>
         </TouchableOpacity>
       </View>

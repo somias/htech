@@ -4,6 +4,7 @@ import { View, Text, Image, ScrollView } from 'react-native';
 import styles from './styles';
 
 const Interface = (props: any) => {
+  //TODO Write types for props
   const date = new Date(props.route.params.publishedAt).toLocaleString();
 
   return (
