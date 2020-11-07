@@ -19,9 +19,15 @@ import ChangeCountry from '~/components/ChangeCountry';
 const Stack = createStackNavigator();
 const Tab = createMaterialTopTabNavigator();
 
+import { COLORS } from '~/assets';
+
 const TabNavigation = () => {
   return (
-    <Tab.Navigator>
+    <Tab.Navigator
+      tabBarOptions={{
+        indicatorStyle: { backgroundColor: COLORS.appColor },
+      }}
+    >
       <Tab.Screen
         name="TopNews"
         component={TopNews}
