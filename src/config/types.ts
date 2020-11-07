@@ -8,3 +8,9 @@ export interface INewsProps {
   url?: string;
   urlToImage?: string;
 }
+
+export interface ICategory {
+  category: string;
+  categoryName: string;
+  data: INewsProps[];
+}

@@ -3,15 +3,10 @@ import { View, FlatList, ScrollView, Text } from 'react-native';
 
 import NewsCard from '~/components/NewsCard';
 
-import { INewsProps } from '~/config/types';
+import { INewsProps, ICategory } from '~/config/types';
 
 import styles from './styles';
 
-interface ICategory {
-  category: string;
-  categoryName: string;
-  data: INewsProps[];
-}
 interface Props {
   data?: ICategory[];
 }
@@ -33,9 +28,7 @@ const Interface = (props: Props) => {
       {props?.data?.map((item) => {
         return (
           <View>
-            <Text style={{ fontSize: 25, fontWeight: 'bold' }}>
-              {item.categoryName}
-            </Text>
+            <Text style={styles.textCategory}>{item.categoryName}</Text>
             <FlatList
               data={item.data}
               renderItem={renderItem}

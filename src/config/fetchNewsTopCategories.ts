@@ -1,5 +1,6 @@
 import { useState, useContext } from 'react';
 import { NewsContext } from '~/context/NewsContext';
+import { ICategory } from '~/config/types';
 
 export default () => {
   const { newsCountry } = useContext(NewsContext);
@@ -7,7 +8,7 @@ export default () => {
   const [error, setError] = useState<string>('');
   const [loading, setLoading] = useState<boolean>(false);
 
-  const [data, setData] = useState<any>([]);
+  const [data, setData] = useState<ICategory[]>([]);
 
   const getNewsCategories = async () => {
     let categoryData = [

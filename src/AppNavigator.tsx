@@ -5,7 +5,6 @@ import { SafeAreaView, StyleSheet } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
-import { createDrawerNavigator } from '@react-navigation/drawer';
 
 //Screens
 import TopNews from '~/screens/TopNews';
@@ -14,32 +13,11 @@ import Search from '~/screens/Search';
 import NewsDetails from '~/screens/NewsDetails';
 
 //Components
-import OpenDrawer from '~/components/OpenDrawer';
-import DrawerContent from '~/components/DrawerContent';
+import HtecLogo from '~/components/HtecLogo';
+import ChangeCountry from '~/components/ChangeCountry';
 
 const Stack = createStackNavigator();
 const Tab = createMaterialTopTabNavigator();
-const Drawer = createDrawerNavigator();
-
-const StackNavigation = () => {
-  return (
-    <Stack.Navigator>
-      <Stack.Screen
-        name="Home"
-        component={TabNavigation}
-        options={({ navigation }) => ({
-          title: 'HTECH News',
-          headerRight: () => <OpenDrawer navigation={navigation} />,
-        })}
-      />
-      <Stack.Screen
-        name="NewsDetails"
-        component={NewsDetails}
-        options={{ title: 'News Details' }}
-      />
-    </Stack.Navigator>
-  );
-};
 
 const TabNavigation = () => {
   return (
@@ -60,9 +38,22 @@ const AppNavigator = () => {
   return (
     <SafeAreaView style={styles.appContainer}>
       <NavigationContainer>
-        <Drawer.Navigator drawerContent={DrawerContent}>
-          <Drawer.Screen name="Home" component={StackNavigation} />
-        </Drawer.Navigator>
+        <Stack.Navigator>
+          <Stack.Screen
+            name="Home"
+            component={TabNavigation}
+            options={() => ({
+              title: '',
+              headerLeft: () => <HtecLogo />,
+              headerRight: () => <ChangeCountry />,
+            })}
+          />
+          <Stack.Screen
+            name="NewsDetails"
+            component={NewsDetails}
+            options={{ title: 'News Details' }}
+          />
+        </Stack.Navigator>
       </NavigationContainer>
     </SafeAreaView>
   );
