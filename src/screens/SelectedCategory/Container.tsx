@@ -5,7 +5,6 @@ import LoadingSpinner from '~/components/LoadingSpinner';
 import DisplayError from '~/components/DisplayError';
 
 import { NewsContext } from '~/context/NewsContext';
-
 import fetchSelectedCategory from '~/config/fetchSelectedCategory';
 
 //TODO Write types for props here

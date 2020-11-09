@@ -12,8 +12,8 @@ export default StyleSheet.create({
       height: 1,
     },
     shadowOpacity: 0.5,
-
     elevation: 10,
+    marginVertical: 5,
   },
   titleWrapper: {},
   title: {

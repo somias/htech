@@ -26,7 +26,6 @@ const Interface = ({
         style={styles.imageStyle}
       />
     </View>
-
     <View style={styles.descriptionWrapper}>
       <Text style={styles.descriptionText}>{description}</Text>
       <TouchableOpacity onPress={onPress}>

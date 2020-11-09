@@ -25,7 +25,11 @@ const renderItem = ({ item }: { item: INewsProps }) => {
 const Interface = (props: Props) => {
   return (
     <View style={styles.container}>
-      <FlatList data={props.data} renderItem={renderItem} />
+      <FlatList
+        data={props.data}
+        renderItem={renderItem}
+        keyExtractor={(_, index) => `key-${index.toString()}`}
+      />
     </View>
   );
 };

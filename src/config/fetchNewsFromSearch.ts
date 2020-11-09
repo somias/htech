@@ -11,8 +11,12 @@ export default () => {
 
   const { newsCountry } = useContext(NewsContext);
 
-  const getSelectedCategory = async (category: string) => {
-    const API = `http://newsapi.org/v2/top-headlines?country=${newsCountry}&category=${category}&apiKey=f8229f0667e64aa1b71f2d34d40ab773`;
+  const getSearchedNews = async (searchValue: string) => {
+    const API = `http://newsapi.org/v2/top-headlines?country=${newsCountry}&q=${searchValue}&apiKey=f8229f0667e64aa1b71f2d34d40ab773`;
+
+    if (!searchValue.length) {
+      return;
+    }
 
     setLoading(true);
 
@@ -24,11 +28,16 @@ export default () => {
         setData(news.articles);
         setLoading(false);
       }
+
+      if (news?.status === 'ok' && !news?.articles.length) {
+        setLoading(false);
+        setError("Looks like we can't find what you were looking for");
+      }
     } catch (error) {
-      setError("Looks like we can't get any news for you");
+      setError("Looks like we can't find what you were looking for");
       console.log('ERROR ==>>', error);
     }
   };
 
-  return { data, getSelectedCategory, loading, error };
+  return { data, getSearchedNews, loading, error };
 };

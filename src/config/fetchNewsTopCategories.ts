@@ -24,7 +24,7 @@ export default () => {
     try {
       newArray = await Promise.all(
         categoryData.map(async (item) => {
-          const API = `http://newsapi.org/v2/top-headlines?country=${newsCountry}&category=${item.category}&pageSize=5&apiKey=a946f39f76a14971899028ee24d07e53`;
+          const API = `http://newsapi.org/v2/top-headlines?country=${newsCountry}&category=${item.category}&pageSize=5&apiKey=f8229f0667e64aa1b71f2d34d40ab773`;
 
           const response = await fetch(API);
           const newsData = await response.json();

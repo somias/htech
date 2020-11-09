@@ -46,6 +46,7 @@ const Interface = (props: Props) => {
               data={item.data}
               renderItem={renderItem}
               horizontal={true}
+              keyExtractor={(_, index) => `key-${index.toString()}`}
             />
           </View>
         );
