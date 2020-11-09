@@ -7,7 +7,7 @@ export default () => {
 
   const { data, setData, newsCountry } = useContext(NewsContext);
 
-  const API = `http://newsapi.org/v2/top-headlines?country=${newsCountry}&apiKey=a946f39f76a14971899028ee24d07e53`;
+  const API = `http://newsapi.org/v2/top-headlines?country=${newsCountry}&apiKey=f8229f0667e64aa1b71f2d34d40ab773`;
 
   const getData = async () => {
     setLoading(true);
@@ -19,6 +19,7 @@ export default () => {
       if (news?.status === 'ok' && news?.articles.length) {
         setData(news.articles);
         setLoading(false);
+        setError('');
       }
     } catch (error) {
       setError("Looks like we can't get any news for you");
