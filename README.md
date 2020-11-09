@@ -1,4 +1,4 @@
-# Tixco - React Native Mobile Application
+# HTEC - React Native Mobile Application
 
 After cloning the project, follow these steps:
 
@@ -27,6 +27,24 @@ Option three:
 ```sh
 npx pod-install ios
 ```
+
+# App structure:
+  
+    ├── ...
+    ├── src                    # Main folder.
+    │   ├── assets             # Assets with global colors and icons.
+    │   ├── components         # Reusable components.
+        ├── config             # Config with fetch files.
+        ├── context            # App News Context.
+    │   └── screens            # Screens.
+    └── ...
+
+## Folder structure 
+ 
+    ├── index.ts                   # Index.
+    ├── Interface.tsx              # Interface as pure component only recevies props and render them.
+    ├── Container.tsx              # Container as components logic (Hooks, Fetch data etc.)  
+    └── styles.ts                  # Styles.
 
 ## Available Scripts
 
@@ -59,3 +77,6 @@ Cleans iOS build folder<br>
 ### `yarn clean:start`
 
 Cleans cache of metro builder<br>
+
+
+
