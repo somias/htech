@@ -6,8 +6,11 @@ import DisplayError from '~/components/DisplayError';
 import { NewsContext } from '~/context/NewsContext';
 import fetchNewsTopCategories from '~/config/fetchNewsTopCategories';
 
+import { useNavigation } from '@react-navigation/native';
+
 export default () => {
   const { newsCountry } = useContext(NewsContext);
+  const { navigate } = useNavigation();
 
   const { data, getNewsCategories, loading, error } = fetchNewsTopCategories();
 
@@ -24,5 +27,10 @@ export default () => {
   if (error) {
     return <DisplayError error={error} />;
   }
-  return <Interface data={newsData} />;
+
+  const navigateToCategory = (category: string, categoryName: string) => {
+    return navigate('SelectedCategory', { category, categoryName });
+  };
+
+  return <Interface data={newsData} navigateToCategory={navigateToCategory} />;
 };

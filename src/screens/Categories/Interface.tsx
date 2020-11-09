@@ -1,5 +1,11 @@
 import React from 'react';
-import { View, FlatList, ScrollView, Text } from 'react-native';
+import {
+  View,
+  FlatList,
+  ScrollView,
+  Text,
+  TouchableOpacity,
+} from 'react-native';
 
 import NewsCard from '~/components/NewsCard';
 
@@ -8,6 +14,7 @@ import { INewsProps, ICategory } from '~/config/types';
 import styles from './styles';
 
 interface Props {
+  navigateToCategory: (category: string, categoryName: string) => void;
   data?: ICategory[];
 }
 
@@ -28,7 +35,13 @@ const Interface = (props: Props) => {
       {props?.data?.map((item) => {
         return (
           <View>
-            <Text style={styles.textCategory}>{item.categoryName}</Text>
+            <TouchableOpacity
+              onPress={() =>
+                props.navigateToCategory(item.category, item.categoryName)
+              }
+            >
+              <Text style={styles.textCategory}>{item.categoryName}</Text>
+            </TouchableOpacity>
             <FlatList
               data={item.data}
               renderItem={renderItem}

@@ -11,6 +11,7 @@ import TopNews from '~/screens/TopNews';
 import Categories from '~/screens/Categories';
 import Search from '~/screens/Search';
 import NewsDetails from '~/screens/NewsDetails';
+import SelectedCategory from '~/screens/SelectedCategory';
 
 //Components
 import HtecLogo from '~/components/HtecLogo';
@@ -59,6 +60,7 @@ const AppNavigator = () => {
             component={NewsDetails}
             options={{ title: 'News Details' }}
           />
+          <Stack.Screen name="SelectedCategory" component={SelectedCategory} />
         </Stack.Navigator>
       </NavigationContainer>
     </SafeAreaView>
