@@ -19,6 +19,7 @@ export default () => {
       if (news?.status === 'ok' && news?.articles.length) {
         setData(news.articles);
         setLoading(false);
+        setError('');
       }
     } catch (error) {
       setError("Looks like we can't get any news for you");

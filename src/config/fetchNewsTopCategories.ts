@@ -39,6 +39,7 @@ export default () => {
 
       setLoading(false);
       setData(newArray);
+      setError('');
     } catch (error) {
       setError("Looks like we can't get any news for you");
       console.log('ERROR ==>>', error);

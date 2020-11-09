@@ -32,9 +32,9 @@ const renderItem = ({ item }: { item: INewsProps }) => {
 const Interface = (props: Props) => {
   return (
     <ScrollView style={styles.container}>
-      {props?.data?.map((item) => {
+      {props?.data?.map((item, index) => {
         return (
-          <View>
+          <View key={`categoryKey-${index.toString()}`}>
             <TouchableOpacity
               onPress={() =>
                 props.navigateToCategory(item.category, item.categoryName)

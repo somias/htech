@@ -27,6 +27,7 @@ export default () => {
       if (news?.status === 'ok' && news?.articles.length) {
         setData(news.articles);
         setLoading(false);
+        setError('');
       }
 
       if (news?.status === 'ok' && !news?.articles.length) {

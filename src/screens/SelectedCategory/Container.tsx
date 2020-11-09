@@ -7,21 +7,30 @@ import DisplayError from '~/components/DisplayError';
 import { NewsContext } from '~/context/NewsContext';
 import fetchSelectedCategory from '~/config/fetchSelectedCategory';
 
-//TODO Write types for props here
-export default (props: any) => {
+import { useNavigation, useRoute } from '@react-navigation/native';
+import { SimpleNavigationProp } from '~/config/types';
+
+import type { RootRouteProp } from '~/config/types';
+
+type RouteProp = RootRouteProp<'SelectedCategory'>;
+
+export default () => {
   const { newsCountry } = useContext(NewsContext);
   const { getSelectedCategory, data, loading, error } = fetchSelectedCategory();
 
+  const navigation = useNavigation<SimpleNavigationProp>();
+  const {params} =  useRoute<RouteProp>()
+
   //This function is to change screen title according to route param.
   useLayoutEffect(() => {
-    props.navigation.setOptions({
-      title: `${props.route.params.categoryName} News` || 'News',
+    navigation.setOptions({
+      title: `${params.categoryName} News` || 'News',
     });
-  }, [props.navigation]);
+  }, [navigation]);
 
   useEffect(() => {
-    getSelectedCategory(props.route.params.category);
-  }, [props.route.params.category, newsCountry]);
+    getSelectedCategory(params.category);
+  }, [params.category, newsCountry]);
 
   const newsData = data || [];
 

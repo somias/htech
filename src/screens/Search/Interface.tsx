@@ -3,6 +3,7 @@ import { FlatList, SafeAreaView } from 'react-native';
 
 import SearchInput from '~/components/SearchInput';
 import NewsCard from '~/components/NewsCard';
+import DisplayError from '~/components/DisplayError';
 
 import { INewsProps } from '~/config/types';
 
@@ -12,6 +13,7 @@ interface Props {
   searchValue: string;
   setSearchValue: (value: string) => void;
   data?: INewsProps[];
+  error?: string;
 }
 
 const renderItem = ({ item }: { item: INewsProps }) => {
@@ -25,15 +27,19 @@ const renderItem = ({ item }: { item: INewsProps }) => {
   );
 };
 
-const Interface = ({ searchValue, setSearchValue, data }: Props) => {
+const Interface = ({ searchValue, setSearchValue, data, error }: Props) => {
   return (
     <SafeAreaView style={styles.container}>
       <SearchInput searchValue={searchValue} setSearchValue={setSearchValue} />
-      <FlatList
-        data={data}
-        renderItem={renderItem}
-        keyExtractor={(_, index) => `key-${index.toString()}`}
-      />
+      {!error ? (
+        <FlatList
+          data={data}
+          renderItem={renderItem}
+          keyExtractor={(_, index) => `key-${index.toString()}`}
+        />
+      ) : (
+        <DisplayError error={error} />
+      )}
     </SafeAreaView>
   );
 };
